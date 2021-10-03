@@ -39,15 +39,15 @@
 
 ## tradings
 
-| Column       | Type       | Options                          |
-| ------------ | ---------- | -------------------------------- |
-| item         | references | null: false foreign_key :item_id |
-| zipcode      | string     | null: false                      |
-| state        | string     | null: false                      |
-| city         | string     | null: false                      |
-| address      | string     | null: false                      |
-| building     | string     |                                  |
-| phone_number | string     | null: false                      |
+| Column       | Type       | Options                               |
+| ------------ | ---------- | ------------------------------------- |
+| item         | references | null: false foreign_key :histories_id |
+| zipcode      | string     | null: false                           |
+| state_id     | string     | null: false                           |
+| city         | string     | null: false                           |
+| address      | string     | null: false                           |
+| building     | string     |                                       |
+| phone_number | string     | null: false                           |
 
 ### Association
 
