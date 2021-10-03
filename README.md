@@ -20,17 +20,17 @@
 
 ## items
 
-| Column         | Type       | Options                       |
-| -------------- | ---------- | ----------------------------- |
-| title          | string     | null: false                   |
-| description    | text       | null: false                   |
-| category       | integer    | null: false                   |
-| shipping_state | integer    | null: false                   |
-| shipping_fee   | integer    | null: false                   |
-| shipping_area  | integer    | null: false                   |
-| shipping_days  | integer    | null: false                   |
-| price          | integer    | null: false                   |
-| user_id        | references | null: false foreign_key :user |
+| Column      | Type       | Options                       |
+| ----------- | ---------- | ----------------------------- |
+| title       | string     | null: false                   |
+| description | text       | null: false                   |
+| category    | integer    | null: false                   |
+| state_id    | integer    | null: false                   |
+| fee_id      | integer    | null: false                   |
+| area_id     | integer    | null: false                   |
+| day_id      | integer    | null: false                   |
+| price       | integer    | null: false                   |
+| user_id     | references | null: false foreign_key :user |
 
 ### Association
 
@@ -39,15 +39,15 @@
 
 ## tradings
 
-| Column            | Type       | Options                       |
-| ----------------- | ---------- | ----------------------------- |
-| trading_item      | references | null: false foreign_key :item |
-| zipcode           | string     | null: false                   |
-| state             | string     | null: false                   |
-| city              | string     | null: false                   |
-| address           | string     | null: false                   |
-| building          | string     |                               |
-| phone_number      | string     | null: false                   |
+| Column       | Type       | Options                          |
+| ------------ | ---------- | -------------------------------- |
+| item         | references | null: false foreign_key :item_id |
+| zipcode      | string     | null: false                      |
+| state        | string     | null: false                      |
+| city         | string     | null: false                      |
+| address      | string     | null: false                      |
+| building     | string     |                                  |
+| phone_number | string     | null: false                      |
 
 ### Association
 
