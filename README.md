@@ -30,7 +30,7 @@
 | area_id     | integer    | null: false                   |
 | day_id      | integer    | null: false                   |
 | price       | integer    | null: false                   |
-| user_id     | references | null: false foreign_key :user |
+| user        | references | null: false foreign_key :true |
 
 ### Association
 
@@ -39,15 +39,15 @@
 
 ## tradings
 
-| Column       | Type       | Options                               |
-| ------------ | ---------- | ------------------------------------- |
-| item         | references | null: false foreign_key :histories_id |
-| zipcode      | string     | null: false                           |
-| state_id     | string     | null: false                           |
-| city         | string     | null: false                           |
-| address      | string     | null: false                           |
-| building     | string     |                                       |
-| phone_number | string     | null: false                           |
+| Column       | Type       | Options                       |
+| ------------ | ---------- | ----------------------------- |
+| history      | references | null: false foreign_key :true |
+| zipcode      | string     | null: false                   |
+| state_id     | integer    | null: false                   |
+| city         | string     | null: false                   |
+| address      | string     | null: false                   |
+| building     | string     |                               |
+| phone_number | string     | null: false                   |
 
 ### Association
 
@@ -55,10 +55,10 @@
 
  ## histories
 
-| Column  | Type       | Options                        |
-| ------- | ---------- | -----------------------------  |
-| user_id | references | null: false foreign_key :user  |
-| item_id | references | null: false foreign_key :title |
+| Column | Type       | Options                       |
+| ------ | ---------- | ----------------------------- |
+| user   | references | null: false foreign_key :true |
+| item   | references | null: false foreign_key :true |
 
 ### Association
 
