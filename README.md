@@ -62,4 +62,4 @@
 
 ### Association
 
-- belongs_to :tradings
+- belongs_to :trading
