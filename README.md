@@ -24,7 +24,7 @@
 | ----------- | ---------- | ----------------------------- |
 | title       | string     | null: false                   |
 | description | text       | null: false                   |
-| category    | integer    | null: false                   |
+| category_id | integer    | null: false                   |
 | state_id    | integer    | null: false                   |
 | fee_id      | integer    | null: false                   |
 | area_id     | integer    | null: false                   |
@@ -35,7 +35,7 @@
 ### Association
 
  - belongs_to :user
- - belongs_to :history
+ - has_one :history
 
 ## tradings
 
@@ -51,7 +51,7 @@
 
 ### Association
 
- - has_many :histories
+ - belongs_to :history
 
  ## histories
 
@@ -62,4 +62,6 @@
 
 ### Association
 
-- belongs_to :trading
+- has_one :trading
+- belongs_to: user
+- belongs_to: item
