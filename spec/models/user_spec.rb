@@ -60,19 +60,19 @@ RSpec.describe User, type: :model do
       it 'パスワードは、半角英字のみでは登録できない' do
         @user.password = 'testestes'
         @user.valid?
-        expect(@user.errors.full_messages).to include( "Password is invalid")
+        expect(@user.errors.full_messages).to include('Password is invalid')
       end
 
       it 'パスワードは、数字のみでは登録できない' do
         @user.password = '111111'
         @user.valid?
-        expect(@user.errors.full_messages).to include( "Password is invalid")
+        expect(@user.errors.full_messages).to include('Password is invalid')
       end
 
       it 'パスワードは、全角では登録できない' do
         @user.password = 'ＴＥＳＴＴＥＳＴＥＳ２２２２'
         @user.valid?
-        expect(@user.errors.full_messages).to include( "Password is invalid")
+        expect(@user.errors.full_messages).to include('Password is invalid')
       end
 
       it 'パスワードとパスワード（確認）は、値が一致していなければ登録できない' do
@@ -97,7 +97,7 @@ RSpec.describe User, type: :model do
       it 'お名前(全角)は、全角（漢字・ひらがな・カタカナ）での入力が必須であること' do
         @user.last_name = 'test_user'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Last name is invalid")
+        expect(@user.errors.full_messages).to include('Last name is invalid')
       end
 
       it 'お名前カナ(全角)は、名字が必須であること' do
@@ -115,13 +115,13 @@ RSpec.describe User, type: :model do
       it 'お名前カナ(全角)の名字は、全角（カタカナ）での入力が必須であること。' do
         @user.last_name_kana = 'ｳﾁﾀﾞ'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Last name kana is invalid")
+        expect(@user.errors.full_messages).to include('Last name kana is invalid')
       end
 
       it 'お名前カナ(全角)の名前は、全角（カタカナ）での入力が必須であること。' do
         @user.first_name_kana = 'ﾀﾂﾔ'
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name kana is invalid")
+        expect(@user.errors.full_messages).to include('First name kana is invalid')
       end
 
       it '生年月日が必須であること' do
@@ -143,7 +143,7 @@ RSpec.describe User, type: :model do
       it 'メールアドレスが正しくない場合はログイン出来ないこと' do
         @user.email = 'aaaaaa.com'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email is invalid")
+        expect(@user.errors.full_messages).to include('Email is invalid')
       end
 
       it 'パスワードが正しくない場合はログイン出来ないこと' do
