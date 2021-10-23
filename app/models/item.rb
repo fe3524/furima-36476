@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   validates :fee_id, presence: true, numericality: { other_than: 1 , message: "can't be blank"}
   validates :day_id, presence: true, numericality: { other_than: 1 , message: "can't be blank"}
   validates :price, presence: true
+  validates :image, presence: true
 
   extend ActiveHash::Associations::ActiveRecordExtensions
 
