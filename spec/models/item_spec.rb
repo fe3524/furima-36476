@@ -83,7 +83,8 @@ RSpec.describe Item, type: :model do
         @item.price = '９９９'
         @item.valid?
         expect(@item.errors.full_messages).to include('Price out of range')
-
+      end
+      
       it 'userが紐付いていなければ出品できない' do
         @item.user = nil
         @item.valid?
