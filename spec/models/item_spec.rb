@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
+  before do
+    @item = FactoryBot.build(:item)
+  end
 
   describe '商品出品機能' do
     context '出品登録できる場合' do
@@ -23,30 +26,57 @@ RSpec.describe Item, type: :model do
       end
 
       it '商品説明がなければ出品できない' do
+        @item.description = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Description can't be blank")
       end
 
       it 'カテゴリーの情報がなければ出品できない' do
+        @item.category_id =  1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category can't be blank")
       end
       
       it '商品状態の情報がなければ出品できない' do
+        @item.status_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Status can't be blank")
       end
 
       it '配送料負担の情報がなければ出品できない' do
+        @item.fee_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Fee can't be blank")
       end
 
       it '発送元地域の情報がなければ出品できない' do
+        @item.state_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("State can't be blank")
       end
 
       it '発送までの日数の情報がなければ出品できない' do
+        @item.day_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Day can't be blank")
       end
 
       it '価格の情報がなければ出品できない' do
+        @item.price = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price can't be blank")
       end
 
       it '価格は制限値内でなければ出品できない' do
+        @item.price = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price out of range")
       end
 
       it '価格は半角数字での入力でなければ出品できない' do
+        @item.price = '９９９'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price out of range")
       end
     end
   end
