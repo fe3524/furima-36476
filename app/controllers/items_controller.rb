@@ -1,10 +1,10 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
-  # 実装後に追記する 
+  # 実装後に追記する
   # :edit, :show
 
   def index
-    # 一覧表示機能実装時に追記する 
+    # 一覧表示機能実装時に追記する
     # @items = Item.order('created_at DESC')
   end
 
