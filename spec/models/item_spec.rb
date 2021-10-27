@@ -32,11 +32,11 @@ RSpec.describe Item, type: :model do
       end
 
       it 'カテゴリーの情報がなければ出品できない' do
-        @item.category_id =  1
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
-      
+
       it '商品状態の情報がなければ出品できない' do
         @item.status_id = 1
         @item.valid?
@@ -70,13 +70,13 @@ RSpec.describe Item, type: :model do
       it '価格は制限値内でなければ出品できない' do
         @item.price = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price out of range")
+        expect(@item.errors.full_messages).to include('Price out of range')
       end
 
       it '価格は半角数字での入力でなければ出品できない' do
         @item.price = '９９９'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price out of range")
+        expect(@item.errors.full_messages).to include('Price out of range')
       end
     end
   end
