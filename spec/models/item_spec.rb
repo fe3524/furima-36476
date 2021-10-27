@@ -74,7 +74,7 @@ RSpec.describe Item, type: :model do
       end
 
       it '価格は10,000,000円以上では出品できない' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
         expect(@item.errors.full_messages).to include('Price out of range')
       end
@@ -84,7 +84,7 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Price out of range')
       end
-      
+
       it 'userが紐付いていなければ出品できない' do
         @item.user = nil
         @item.valid?
