@@ -67,8 +67,14 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
 
-      it '価格は制限値内でなければ出品できない' do
-        @item.price = 1
+      it '価格は299円以下では出品できない' do
+        @item.price = 299
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price out of range')
+      end
+
+      it '価格は10,000,000円以上では出品できない' do
+        @item.price = 10000000
         @item.valid?
         expect(@item.errors.full_messages).to include('Price out of range')
       end
@@ -77,6 +83,11 @@ RSpec.describe Item, type: :model do
         @item.price = '９９９'
         @item.valid?
         expect(@item.errors.full_messages).to include('Price out of range')
+
+      it 'userが紐付いていなければ出品できない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include('User must exist')
       end
     end
   end
