@@ -1,8 +1,11 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :show]
+  before_action :authenticate_user!, only: [:new, :create]
+  # 実装後に追記する 
+  # :edit, :show
 
   def index
-    @items = Item.order('created_at DESC')
+    # 一覧表示機能実装時に追記する 
+    # @items = Item.order('created_at DESC')
   end
 
   def new
@@ -18,11 +21,12 @@ class ItemsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  # 編集機能・詳細機能実装時に追記する
+  # def edit
+  # end
 
-  def show
-  end
+  # def show
+  # end
 
   private
 
