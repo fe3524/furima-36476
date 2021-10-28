@@ -4,8 +4,7 @@ class ItemsController < ApplicationController
   # :edit, :show
 
   def index
-    # 一覧表示機能実装時に追記する
-    # @items = Item.order('created_at DESC')
+    @items = Item.all
   end
 
   def new
@@ -25,8 +24,8 @@ class ItemsController < ApplicationController
   # def edit
   # end
 
-  def show
-  end
+  # def show
+  # end
 
   private
 
