@@ -8,6 +8,8 @@ class Item < ApplicationRecord
   validates :day_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
   validates :price, presence: true
   validates :price, inclusion: { in: 300..9_999_999, message: 'out of range' }
+  validates :price, numericality: { only_integer: true }
+  
   validates :image, presence: true
 
   extend ActiveHash::Associations::ActiveRecordExtensions
