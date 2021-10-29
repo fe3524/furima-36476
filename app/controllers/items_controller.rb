@@ -3,7 +3,6 @@ class ItemsController < ApplicationController
   before_action :item_find, only: [:edit, :show, :update]
   before_action :redirect_to_root, only: [:edit, :update]
 
-
   def index
     @items = Item.all.order('created_at DESC')
   end
