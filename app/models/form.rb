@@ -5,7 +5,7 @@ class Form
 
   validates :zipcode, presence: true, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
   validates :token, :city, :addresses, :user_id, :item_id, presence: true
-  validates :state_id, presense: true, numericality: {other_than: 1}
+  #validates :state_id, presense: true
 
   def save
     history = History.create(user_id: user_id, item_id: item_id)

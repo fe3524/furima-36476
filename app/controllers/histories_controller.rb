@@ -5,5 +5,5 @@ class HistoriesController < ApplicationController
     @form = Form.new
   end
 
-end
+
 end
