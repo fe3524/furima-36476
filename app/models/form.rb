@@ -8,6 +8,15 @@ class Form
   validates :state_id, presense: true, numericality: {other_than: 1}
 
   def save
-    trading = Trading.create(user_id: user_id, item_id: item_id)
+    history = History.create(user_id: user_id, item_id: item_id)
+    Trading.create(
+      zipcode: zipcode,
+      state_id: state_id,
+      city: city,
+      address: address,
+      building: building,
+      phone_number: phone_number,
+      history_id: history_id
+    )
   end
 end
