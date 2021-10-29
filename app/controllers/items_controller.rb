@@ -20,9 +20,8 @@ class ItemsController < ApplicationController
     end
   end
 
-  # 編集機能・詳細機能実装時に追記する
-  # def edit
-  # end
+  def edit
+  end
 
   def show
     @items = Item.find(params[:id])
