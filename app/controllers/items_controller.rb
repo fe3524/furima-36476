@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :redirect_to_root, only: [:edit, :update]
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -50,5 +51,10 @@ class ItemsController < ApplicationController
       :day_id,
       :price
     ).merge(user_id: current_user.id)
+  end
+
+  def redirect_to_root
+    @item = Item.find(params[:id])
+    redirect_to root_path unless @item.user_id == current_user.id
   end
 end
