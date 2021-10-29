@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
-  # 実装後に追記する
-  # :edit, :show
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :item_find, only: [:edit, :show, :update]
+  before_action :redirect_to_root, only: [:edit, :update]
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -20,12 +20,18 @@ class ItemsController < ApplicationController
     end
   end
 
-  # 編集機能・詳細機能実装時に追記する
-  # def edit
-  # end
+  def edit
+  end
 
   def show
-    @items = Item.find(params[:id])
+  end
+
+  def update
+    if @item.update(item_params)
+      redirect_to item_path(@item.id)
+    else
+      render :edit
+    end
   end
 
   private
@@ -42,5 +48,13 @@ class ItemsController < ApplicationController
       :day_id,
       :price
     ).merge(user_id: current_user.id)
+  end
+
+  def item_find
+    @item = Item.find(params[:id])
+  end
+
+  def redirect_to_root
+    redirect_to root_path unless @item.user_id == current_user.id
   end
 end
