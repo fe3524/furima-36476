@@ -8,6 +8,6 @@ class Form
   validates :state_id, presense: true, numericality: {other_than: 1}
 
   def save
-    # 各テーブルにデータを保存する処理を書く
+    trading = Trading.create(user_id: user_id, item_id: item_id)
   end
 end
