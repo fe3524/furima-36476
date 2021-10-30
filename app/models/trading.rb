@@ -7,6 +7,6 @@ class Trading < ApplicationRecord
     validates :address
     validates :phone_number
   end
-  
-  has_one :history
+
+  belongs_to :history
 end
