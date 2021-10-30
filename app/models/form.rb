@@ -16,7 +16,6 @@ class Form
       address: address,
       building: building,
       phone_number: phone_number,
-      history_id: history_id
     )
   end
 end
