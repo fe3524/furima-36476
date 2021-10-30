@@ -6,7 +6,6 @@ class HistoriesController < ApplicationController
   end
 
   def create
-    binding.pry
     @history = History.new(history_params)
     Trading.create(trading_params)
 
