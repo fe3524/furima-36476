@@ -1,5 +1,6 @@
 class HistoriesController < ApplicationController
   before_action :authenticate_user!
+  before_action :take_item, only: [:index, :create]
 
   def index
     @form = Form.new
@@ -17,6 +18,10 @@ class HistoriesController < ApplicationController
   end
 
   private
+
+  def take_item
+    @item = Item.find(params[:item_id])
+  end
 
   def history_params
     params.merge(user_id: current_user.id)
