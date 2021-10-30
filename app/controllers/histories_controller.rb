@@ -7,10 +7,9 @@ class HistoriesController < ApplicationController
   end
 
   def create
-    @history = History.new(history_params)
-    Trading.create(trading_params)
+    @form = Form.new(history_params)
 
-    if @history.save
+    if @form.save
       return redirect_to root_path
     else
       render 'index'
@@ -24,7 +23,10 @@ class HistoriesController < ApplicationController
   end
 
   def history_params
-    params.merge(user_id: current_user.id)
+    params
+    binding.pry
+    .require(:form).permit(:zipcode, :state_id, :city, :addresses, :building, :phone_number)
+    .merge(item_id: params[:item_id], user_id: current_user.id)
   end
 
   def trading_params
