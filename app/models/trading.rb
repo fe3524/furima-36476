@@ -1,10 +1,12 @@
 class Trading < ApplicationRecord
-  validates :history, presence: true
-  validates :zipcode, presence: true
-  validates :state_id, presence: true
-  validates :city, presence: true
-  validates :address, presence: true
-  validates :phone_number, presence: true
-
+  with_options presence: true do
+    validates :history
+    validates :zipcode
+    validates :state_id
+    validates :city
+    validates :address
+    validates :phone_number
+  end
+  
   has_one :history
 end

@@ -16,6 +16,10 @@ class HistoriesController < ApplicationController
 
   private
 
+  def item
+    @item = Item.find(params[:item_id])
+  end
+
   def history_params
     params.require(:form).permit(
       :zipcode,
