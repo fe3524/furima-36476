@@ -24,19 +24,8 @@ class HistoriesController < ApplicationController
 
   def history_params
     params
-    binding.pry
-    .require(:form).permit(:zipcode, :state_id, :city, :addresses, :building, :phone_number)
+    .require(:form)
+    .permit(:zipcode, :state_id, :city, :address, :building, :phone_number)
     .merge(item_id: params[:item_id], user_id: current_user.id)
-  end
-
-  def trading_params
-    params.permit(
-      :zipcode,
-      :state_id,
-      :city,
-      :address,
-      :building,
-      :phone_number
-    ).merge(history_id: @history.id)
   end
 end
