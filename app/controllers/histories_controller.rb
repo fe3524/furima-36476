@@ -9,7 +9,8 @@ class HistoriesController < ApplicationController
   def create
     @form = Form.new(history_params)
 
-    if @form.save
+    if @form.valid?
+      @form.save
       return redirect_to root_path
     else
       render 'index'
