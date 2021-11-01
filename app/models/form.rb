@@ -16,14 +16,6 @@ class Form
 
   def save
     history = History.create(user_id: user_id, item_id: item_id)
-    Trading.create(
-      zipcode: zipcode,
-      state_id: state_id,
-      city: city,
-      address: address,
-      building: building,
-      phone_number: phone_number,
-      history_id: history.id
-    )
+    Trading.create(zipcode: zipcode, state_id: state_id, city: city, address: address, building: building, phone_number: phone_number, history_id: history.id)
   end
 end
