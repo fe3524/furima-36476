@@ -1,6 +1,8 @@
 class HistoriesController < ApplicationController
   before_action :authenticate_user!
   before_action :take_item, only: [:index, :create]
+  before_action :redirect_to_root
+
 
   def index
     @form = Form.new
@@ -37,5 +39,9 @@ class HistoriesController < ApplicationController
       card: history_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def redirect_to_root
+    redirect_to root_path if @item.user_id == current_user.id || @item.order.present?
   end
 end
