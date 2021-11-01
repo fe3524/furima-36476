@@ -3,7 +3,6 @@ class HistoriesController < ApplicationController
   before_action :take_item, only: [:index, :create]
   before_action :redirect_to_root
 
-
   def index
     @form = Form.new
   end
@@ -14,7 +13,7 @@ class HistoriesController < ApplicationController
     if @form.valid?
       pay_item
       @form.save
-      return redirect_to root_path
+      redirect_to root_path
     else
       render 'index'
     end
@@ -28,11 +27,11 @@ class HistoriesController < ApplicationController
 
   def history_params
     params
-    .require(:form).permit(:zipcode, :state_id, :city, :address, :building, :phone_number).merge(token: params[:token], item_id: params[:item_id],  user_id: current_user.id)
+      .require(:form).permit(:zipcode, :state_id, :city, :address, :building, :phone_number).merge(token: params[:token], item_id: params[:item_id], user_id: current_user.id)
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,
       card: history_params[:token],
