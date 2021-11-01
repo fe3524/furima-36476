@@ -9,7 +9,6 @@ class HistoriesController < ApplicationController
   end
 
   def create
-    binding.pry
     @form = Form.new(history_params)
 
     if @form.valid?
