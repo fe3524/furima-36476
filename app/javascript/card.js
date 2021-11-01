@@ -8,16 +8,19 @@ const pay = () => {
     const formData = new FormData(formResult);
 
     const card = {
-      number: formData.get("history[number]"),
-      cvc: formData.get("history[cvc]"),
-      exp_month: formData.get("history[exp_month]"),
-      exp_year: `20${formData.get("history[exp_year]")}`,
+      number: formData.get("form[number]"),
+      cvc: formData.get("form[cvc]"),
+      exp_month: formData.get("form[exp_month]"),
+      exp_year: `20${formData.get("form[exp_year]")}`,
     };
 
     Payjp.createToken(card, (status, response) => {
       if (status == 200) {
         const token = response.id;
-        console.log(token)
+        const renderDom = document.getElementById("charge-form");
+        const tokenObj = `<input value=${token} name='token'>`;
+        renderDom.insertAdjacentHTML("beforeend", tokenObj);
+        debugger;
       }
     });
   });
