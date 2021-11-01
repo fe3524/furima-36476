@@ -27,6 +27,6 @@ class HistoriesController < ApplicationController
     params
     .require(:form)
     .permit(:zipcode, :state_id, :city, :address, :building, :phone_number)
-    .merge(item_id: params[:item_id], user_id: current_user.id)
+    .merge(token: params[:token], item_id: params[:item_id], user_id: current_user.id)
   end
 end
