@@ -2,14 +2,25 @@ require 'rails_helper'
 
 RSpec.describe Form, type: :model do
   describe '商品購入' do
+    before do
+      @user = FactoryBot.create(:user)
+      @item = FactoryBot.create(:item)
+      @form = FactoryBot.build(:form,user_id: @user.id, item_id: @item.id)
+    end
+
     context '商品が購入できる場合' do
       it '必要な情報を適切に入力していればDBへ保存ができる' do
+        expect(@form).to be_valid
       end
 
       it '建物名は空欄でも保存できる' do
+        @form.building = ''
+        expect(@form).to be_valid
       end
       
-      it '電話番号は10桁以上11桁以内であれば保存できる'
+      it '電話番号は10桁以上11桁以内であれば保存できる' do
+        @form.phone_number = '0123456789'
+        expect(@form).to be_valid
       end
     end
 
