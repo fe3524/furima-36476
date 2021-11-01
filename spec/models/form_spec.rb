@@ -18,7 +18,7 @@ RSpec.describe Form, type: :model do
         @form.building = ''
         expect(@form).to be_valid
       end
-      
+
       it '電話番号は10桁以上11桁以内であれば保存できる' do
         @form.phone_number = '0123456789'
         expect(@form).to be_valid
@@ -31,7 +31,7 @@ RSpec.describe Form, type: :model do
         @form.valid?
         expect(@form.errors.full_messages).to include("Token can't be blank")
       end
-      
+
       it 'user情報がなければ登録できない' do
         @form.user_id = ''
         @form.valid?
@@ -47,26 +47,25 @@ RSpec.describe Form, type: :model do
       it '郵便番号がなければ登録できない' do
         @form.zipcode =  ''
         @form.valid?
-        expect(@form.errors.full_messages).to include("Zipcode is invalid. Include hyphen(-)")
+        expect(@form.errors.full_messages).to include('Zipcode is invalid. Include hyphen(-)')
       end
 
       it '郵便番号にハイフンがなければ登録できない' do
         @form.zipcode = '1111111 '
         @form.valid?
-        expect(@form.errors.full_messages).to include("Zipcode is invalid. Include hyphen(-)")
-
+        expect(@form.errors.full_messages).to include('Zipcode is invalid. Include hyphen(-)')
       end
 
       it '郵便番号は半角文字列でなければ登録できない' do
         @form.zipcode = '３３３−３３３３'
         @form.valid?
-        expect(@form.errors.full_messages).to include("Zipcode is invalid. Include hyphen(-)")
+        expect(@form.errors.full_messages).to include('Zipcode is invalid. Include hyphen(-)')
       end
 
       it '都道府県が選択されていなければ登録できない' do
         @form.state_id = 1
         @form.valid?
-        expect(@form.errors.full_messages).to include("State must be other than 1")
+        expect(@form.errors.full_messages).to include('State must be other than 1')
       end
 
       it '市区町村の情報がなければ登録できない' do
@@ -90,25 +89,25 @@ RSpec.describe Form, type: :model do
       it '電話番号が10桁以下では登録できない' do
         @form.phone_number = '012345678'
         @form.valid?
-        expect(@form.errors.full_messages).to include( "Phone number is invalid")
+        expect(@form.errors.full_messages).to include('Phone number is invalid')
       end
 
       it '電話番号が12桁以上では登録できない' do
         @form.phone_number = '012345678901'
         @form.valid?
-        expect(@form.errors.full_messages).to include( "Phone number is invalid")
+        expect(@form.errors.full_messages).to include('Phone number is invalid')
       end
 
       it '電話番号にハイフンがあると登録できない' do
         @form.phone_number = '012-3456-7890'
         @form.valid?
-        expect(@form.errors.full_messages).to include( "Phone number is invalid")
+        expect(@form.errors.full_messages).to include('Phone number is invalid')
       end
 
       it '電話番号は半角数字でなければ登録できない' do
         @form.phone_number = '１２３４５６７８９０１'
         @form.valid?
-        expect(@form.errors.full_messages).to include( "Phone number is invalid")
+        expect(@form.errors.full_messages).to include('Phone number is invalid')
       end
     end
   end

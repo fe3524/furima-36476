@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :form do
-    token {"tok_abcdefghijk00000000000000000"}
+    token { 'tok_abcdefghijk00000000000000000' }
     zipcode { '222-2222' }
     state_id { 2 }
     city { '横浜市緑区' }
