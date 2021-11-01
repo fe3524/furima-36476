@@ -10,6 +10,7 @@ class HistoriesController < ApplicationController
     @form = Form.new(history_params)
 
     if @form.valid?
+      pay_item
       @form.save
       return redirect_to root_path
     else
@@ -28,5 +29,14 @@ class HistoriesController < ApplicationController
     .require(:form)
     .permit(:zipcode, :state_id, :city, :address, :building, :phone_number)
     .merge(token: params[:token], item_id: params[:item_id], user_id: current_user.id)
+  end
+
+  def pay_item
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp::Charge.create(
+      amount: @item.price,
+      card: form_params[:token],
+      currency: 'jpy'
+    )
   end
 end
