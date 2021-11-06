@@ -27,7 +27,7 @@
 | category_id | integer    | null: false                   |
 | state_id    | integer    | null: false                   |
 | fee_id      | integer    | null: false                   |
-| area_id     | integer    | null: false                   |
+| status_id   | integer    | null: false                   |
 | day_id      | integer    | null: false                   |
 | price       | integer    | null: false                   |
 | user        | references | null: false foreign_key :true |
