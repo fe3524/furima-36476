@@ -36,6 +36,12 @@
 
  - belongs_to :user
  - has_one :history
+ - has_one_atached :image
+ - belongs_to :category
+ - belongs_to :status
+ - belongs_to :state
+ - belongs_to :fee
+ - belongs_to :day
 
 ## tradings
 
