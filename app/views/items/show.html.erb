@@ -23,7 +23,7 @@
       <span class="item-postage">
         <%= @item.fee.name %>
       </span>
-    </div>
+    </div>　
 
   <% if user_signed_in? && @item.history.nil? %>
     <% if current_user.id == @item.user_id %>
