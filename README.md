@@ -27,7 +27,7 @@
 | category_id | integer    | null: false                   |
 | state_id    | integer    | null: false                   |
 | fee_id      | integer    | null: false                   |
-| area_id     | integer    | null: false                   |
+| status_id   | integer    | null: false                   |
 | day_id      | integer    | null: false                   |
 | price       | integer    | null: false                   |
 | user        | references | null: false foreign_key :true |
@@ -36,6 +36,12 @@
 
  - belongs_to :user
  - has_one :history
+ - has_one_atached :image
+ - belongs_to :category
+ - belongs_to :status
+ - belongs_to :state
+ - belongs_to :fee
+ - belongs_to :day
 
 ## tradings
 
